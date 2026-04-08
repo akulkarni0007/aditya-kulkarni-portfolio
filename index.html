@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya M. Kulkarni | Technical Project Manager</title>
+  <meta
+    name="description"
+    content="Portfolio website for Aditya M. Kulkarni, Technical Project Manager specializing in healthcare, data systems, and Agile delivery."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: #ffffff;
+      --text: #e5e7eb;
+      --text-dark: #0f172a;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 50px rgba(2, 8, 23, 0.35);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 30%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 25%),
+        linear-gradient(180deg, #0f172a 0%, #111827 45%, #f8fafc 45%, #f8fafc 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus { color: #fff; }
+
+    .hero {
+      padding: 64px 0 88px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: #dbeafe;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 760px;
+      margin: 22px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      color: white;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+    }
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: white;
+    }
+
+    .hero-card,
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      aspect-ratio: 4 / 4.6;
+      background: linear-gradient(180deg, rgba(56,189,248,0.22), rgba(255,255,255,0.04));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: #1e293b;
+    }
+
+    .hero-meta {
+      padding: 22px;
+    }
+
+    .hero-meta h2 {
+      margin: 0 0 6px;
+      font-size: 1.3rem;
+    }
+
+    .hero-meta p { margin: 0; font-size: 0.96rem; }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      color: #fff;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      color: var(--text-dark);
+      background: #f8fafc;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    .section-heading .label {
+      color: #0369a1;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+      margin: 0 0 12px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading p {
+      margin: 14px 0 0;
+      color: #475569;
+      font-size: 1.04rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 26px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .muted { color: #475569; }
+
+    .experience-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .job-title {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .job-subtitle {
+      margin: 4px 0 0;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .job-period {
+      color: #64748b;
+      font-size: 0.92rem;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334155;
+    }
+
+    .bullet-list li + li { margin-top: 10px; }
+
+    .skills-grid,
+    .pub-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pill {
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0c4a6e;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .project-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+    }
+
+    .project-card p {
+      margin: 10px 0 0;
+      color: #475569;
+    }
+
+    .resume-download {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #082f49, #0f172a);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .resume-download h3,
+    .resume-download p { margin: 0; }
+    .resume-download p { color: #cbd5e1; margin-top: 8px; }
+
+    .contact-box {
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box a {
+      color: #dbeafe;
+      text-decoration: none;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 28px 0 50px;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.94rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-2,
+      .skills-grid,
+      .pub-grid,
+      .project-grid,
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .job-header,
+      .resume-download {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 40px;
+        padding-bottom: 56px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <strong>Aditya M. Kulkarni</strong>
+        <span>Technical Project Manager | Agile Delivery | Healthcare & Data Systems</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Open to Omaha and remote opportunities</div>
+        <h1>Project leadership that turns complex work into clear execution.</h1>
+        <p>
+          Technical Project Manager with 13+ years of experience delivering cross-functional programs in healthcare and data-driven environments. I specialize in Agile delivery, stakeholder alignment, workflow optimization, and measurable outcomes in regulated settings.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:adityamkulkarni@gmail.com">Contact Me</a>
+          <a class="btn btn-secondary" href="#experience">View Experience</a>
+          <a class="btn btn-secondary" href="resume.pdf" download>Download Resume</a>
+        </div>
+        <div class="quick-stats">
+          <div class="stat">
+            <strong>13+</strong>
+            <span>Years of experience</span>
+          </div>
+          <div class="stat">
+            <strong>10+</strong>
+            <span>Concurrent programs led</span>
+          </div>
+          <div class="stat">
+            <strong>$500K–$1M+</strong>
+            <span>Portfolio managed</span>
+          </div>
+          <div class="stat">
+            <strong>15+</strong>
+            <span>Peer-reviewed publications</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="hero-photo">
+          <img id="headshot" src="professional-headshot.jpg" alt="Professional headshot of Aditya M. Kulkarni" style="object-fit: cover; object-position: 52% 25%;" />
+        </div>
+        <div id="photo-editor" style="display:none;padding:10px 20px;">
+          <label style="font-size:12px; color:#cbd5e1;">Adjust Photo Position</label><br>
+          <input type="range" min="0" max="100" value="50" id="sliderX" style="width:100%;">
+          <input type="range" min="0" max="100" value="50" id="sliderY" style="width:100%; margin-top:5px;">
+        </div>
+        <div class="hero-meta">
+          <h2>Aditya M. Kulkarni</h2>
+          <p>Technical Project Manager based in Omaha, Nebraska</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="label">About</p>
+          <h2>A site built to be professional today and easy to update tomorrow.</h2>
+          <p>
+            This version is intentionally simple to maintain. You can edit text, swap your headshot, update publications, and replace your resume file without needing a developer or terminal commands.
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>What I do best</h3>
+            <p class="muted">
+              I lead cross-functional initiatives from planning through delivery, translate technical work into clear priorities, and improve workflows, reporting visibility, and stakeholder decision-making.
+            </p>
+          </div>
+          <div class="card reveal">
+            <h3>Best-fit roles</h3>
+            <p class="muted">
+              Technical Project Manager, Program Manager, Technical Program Manager, and Product or Delivery Operations roles across healthcare, tech, and data-intensive environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="label">Experience</p>
+          <h2>Recent leadership and delivery impact</h2>
+          <p>
+            A focused summary of the roles, outcomes, and operational improvements most relevant to employers in healthcare and technology.
+          </p>
+        </div>
+        <div class="experience-list">
+          <article class="card reveal">
+            <div class="job-header">
+              <div>
+                <h3 class="job-title">Consultant – Technical Project Delivery</h3>
+                <p class="job-subtitle">Northwestern University · Chicago, IL</p>
+              </div>
+              <div class="job-period">Feb 2026 – Present</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Led delivery of multiple data-driven programs, coordinating cross-functional stakeholders and improving execution efficiency and reporting visibility.</li>
+              <li>Managed project plans, timelines, and risk mitigation to support consistent on-time delivery.</li>
+              <li>Implemented Agile workflows to improve execution speed and team coordination.</li>
+              <li>Translated technical requirements into clear execution plans and measurable outcomes.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="job-header">
+              <div>
+                <h3 class="job-title">Technical Project Manager</h3>
+                <p class="job-subtitle">Boys Town National Research Hospital · Omaha, NE</p>
+              </div>
+              <div class="job-period">Feb 2018 – Feb 2026</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Led delivery of 10+ concurrent cross-functional programs, managing teams of 5–15 stakeholders and aligning execution with organizational priorities.</li>
+              <li>Managed a $500K–$1M+ portfolio of federally funded programs, ensuring budget control, regulatory compliance, and successful delivery outcomes.</li>
+              <li>Drove Agile transformation across programs, reducing delivery timelines by 20–30% and improving predictability and stakeholder visibility.</li>
+              <li>Defined execution strategy, prioritized initiatives, and improved data pipelines and reporting frameworks.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="job-header">
+              <div>
+                <h3 class="job-title">Cochlear Implant Research Technician</h3>
+                <p class="job-subtitle">Boys Town National Research Hospital · Omaha, NE</p>
+              </div>
+              <div class="job-period">Jan 2014 – Jan 2018</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Coordinated execution of research studies and data workflows across multiple concurrent initiatives.</li>
+              <li>Automated data visualization and reporting processes, reducing manual effort by about 25%.</li>
+              <li>Supported grant-funded projects and improved operational efficiency across teams.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="label">Selected Projects</p>
+          <h2>Examples of execution, rigor, and measurable outcomes</h2>
+          <p>
+            Use this section to showcase projects that bridge technical coordination, research rigor, and operational delivery. Replace or expand these as needed.
+          </p>
+        </div>
+        <div class="project-grid">
+          <div class="project-card reveal">
+            <h3>NIH-Funded Auditory Processing Programs</h3>
+            <p>Managed concurrent studies across clinical, technical, and research teams while aligning scope, schedule, budget, and reporting deliverables.</p>
+          </div>
+          <div class="project-card reveal">
+            <h3>Workflow and Reporting Optimization</h3>
+            <p>Improved analysis and reporting visibility through better data pipelines, structured tracking, and clearer stakeholder communication.</p>
+          </div>
+          <div class="project-card reveal">
+            <h3>Agile Delivery Transformation</h3>
+            <p>Introduced Agile practices that shortened timelines, increased predictability, and improved transparency across cross-functional teams.</p>
+          </div>
+          <div class="project-card reveal">
+            <h3>Publication and Grant Support</h3>
+            <p>Supported high-quality research outputs through data management, project coordination, compliance oversight, and technical communication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="label">Skills</p>
+          <h2>Core capabilities</h2>
+          <p>Presented in a clean format so recruiters can scan them quickly and you can edit them easily later.</p>
+        </div>
+        <div class="pill-grid reveal">
+          <span class="pill">Agile / Scrum Delivery</span>
+          <span class="pill">Program & Stakeholder Management</span>
+          <span class="pill">Budgeting & Resource Planning</span>
+          <span class="pill">Process Optimization</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Jira / SharePoint / Git</span>
+          <span class="pill">AWS / Azure Fundamentals</span>
+          <span class="pill">Healthcare & Data Systems</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="resume-download reveal">
+          <div>
+            <h3>Download my resume</h3>
+            <p>Place your PDF in the same folder as this HTML file and name it <strong>resume.pdf</strong>.</p>
+          </div>
+          <a class="btn btn-primary" href="resume.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="label">Publications</p>
+          <h2>Selected research and thought leadership</h2>
+          <p>Kept intentionally concise so the site supports both healthcare and broader technical opportunities.</p>
+        </div>
+        <div class="pub-grid">
+          <div class="card reveal">
+            <h3>Emotional prosody perception and production are linked in prelingually deaf children with cochlear implants</h3>
+            <p class="muted">JASA Express Letters</p>
+          </div>
+          <div class="card reveal">
+            <h3>A tonal language benefit for pitch in normally-hearing and cochlear-implanted children</h3>
+            <p class="muted">Scientific Reports</p>
+          </div>
+          <div class="card reveal">
+            <h3>Effects of age and hearing loss on the recognition of emotions in speech</h3>
+            <p class="muted">Ear and Hearing</p>
+          </div>
+          <div class="card reveal">
+            <h3>Children’s recognition of emotional prosody in spectrally-degraded speech</h3>
+            <p class="muted">Ear and Hearing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div class="section-heading" style="margin-bottom: 0; color: white;">
+            <p class="label" style="color:#7dd3fc;">Contact</p>
+            <h2 style="color:white;">Let’s talk</h2>
+            <p style="color:#cbd5e1;">
+              I’m open to technical project, program, and operations opportunities in Omaha and remote-first environments.
+            </p>
+          </div>
+          <div class="contact-details">
+            <div>Email: <a href="mailto:adityamkulkarni@gmail.com">adityamkulkarni@gmail.com</a></div>
+            <div>Location: Omaha, Nebraska</div>
+            <div>LinkedIn: <a href="#">Add your LinkedIn URL here</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container footer">
+      © 2026 Aditya M. Kulkarni. Built for easy updates and straightforward deployment.
+    </div>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Headshot adjustment
+    const img = document.getElementById('headshot');
+    const sliderX = document.getElementById('sliderX');
+    const sliderY = document.getElementById('sliderY');
+
+    function updatePosition() {
+      const x = sliderX.value;
+      const y = sliderY.value;
+      img.style.objectPosition = x + "% " + y + "%";
+    }
+
+    sliderX.addEventListener('input', updatePosition);
+    sliderY.addEventListener('input', updatePosition);
+  </script>
+</body>
+</html>
